@@ -3,6 +3,7 @@ Some AI for the Gomoku include minmax, MCTS,Alpha Zero(TODO), and so on.
 本项目中包含python版本和C++版本的实现。
 
 **其中，python版本是初版的实现，作为V1.0版本，不打算继续更新python版本。C++作为后续迭代版本，目前更新到V1.5**
+
 具体内容如下：
 
 # python version 1.0
