@@ -127,7 +127,7 @@ class AIPlayer_3():
 
 class AIPlayer_4(): # MCTS
     def __init__(self,board,is_black):
-        self.ai = MCTS_better()
+        self.ai = MCTS_better(is_black)
         print('AI_4')
 
 

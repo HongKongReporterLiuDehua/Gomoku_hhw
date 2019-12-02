@@ -9,7 +9,12 @@ import random
 from chessboard import ChessBoard
 
 
-
+def evaluate_best(board,color):
+	b_value,w_value = board.value_judge_best()
+	if color == BLACK:
+		return b_value - w_value
+	else:
+		return w_value - b_value	
 
 def evaluate(board,color):
 	b_value,w_value = board.value_judge(color)
@@ -264,14 +269,12 @@ class MinMax_smallset():
 		return idx
 
 	def Max(self,board,move,depth,cut_value):
-		# self.count += 1
-		# if self.count % 100 == 0:
-		# 	print(self.count)
+		self.count += 1
+		if self.count % 1000 == 0:
+			print(self.count)
 		my_board = copy.deepcopy(board)
-		base_value = 0
 		if move is not None:
 			my_board.draw_xy(move[0],move[1],self.other)
-			base_value = evaluate_2(my_board,self.color,move[0],move[1])
 			
 			if my_board.anyone_win(move[0],move[1]) == self.color:
 				self.over = True
@@ -279,9 +282,12 @@ class MinMax_smallset():
 			if my_board.anyone_win(move[0],move[1]) == self.other:
 				self.over = True
 				return -9999999 * (depth + 1),(move[0],move[1])
-		empty_item = my_board.get_k_dist_empty(3)
+
+		empty_item = my_board.get_k_dist_empty_10(3,self.color)
+
 		if len(empty_item) == 0:
 			empty_item.append([MIDDLE,MIDDLE])
+
 		max_value = -999999999
 
 		t = random.randint(0,len(empty_item)-1)
@@ -289,17 +295,16 @@ class MinMax_smallset():
 		depth -= 1
 		#print('MAX_depth:'+str(depth))
 		if depth < 0:
-			return evaluate_2(my_board,self.color,move[0],move[1]),(move[0],move[1])
-
+			return evaluate_best(my_board,self.color),(move[0],move[1])
 		# if base_value > cut_value:
 		# 	return cut_value,(move[0],move[1])
 		for mov in empty_item:
 			
-			v,idx = self.Min(my_board,mov,depth,max_value)
-			value = base_value + v
+			value,idx = self.Min(my_board,mov,depth,max_value)
 			if value > cut_value:
 				return cut_value,(move[0],move[1])
 
+			#print(str(mov) + '****' + str(value))
 			# if value > cut_value:
 			# 	return cut_value,(move[0],move[1])
 			if max_value < value:
@@ -313,14 +318,12 @@ class MinMax_smallset():
 
 
 	def Min(self,board,move,depth,cut_value):
-		# self.count += 1
+		self.count += 1
 		# if self.count % 100 == 0:
 		# 	print(self.count)
 		my_board = copy.deepcopy(board)
-		base_value = 0
 		if move is not None:
 			my_board.draw_xy(move[0],move[1],self.color)
-			base_value = evaluate_2(my_board,self.color,move[0],move[1])
 			
 			if my_board.anyone_win(move[0],move[1]) == self.color:
 				self.over = True
@@ -328,20 +331,22 @@ class MinMax_smallset():
 			if my_board.anyone_win(move[0],move[1]) == self.other:
 				self.over = True
 				return -9999999 * (depth + 1),(move[0],move[1])
-		empty_item = my_board.get_k_dist_empty(3)
+
+		empty_item = my_board.get_k_dist_empty_10(3,self.other)
+		if len(empty_item) == 0:
+			empty_item.append([MIDDLE,MIDDLE])
 		min_value = 999999999
 		t = random.randint(0,len(empty_item)-1)
 		min_idx = empty_item[t]
 		depth -= 1
 		#print('MIN_depth:' + str(depth))
 		if depth < 0:
-			return evaluate_2(my_board,self.color,move[0],move[1]),(move[0],move[1])
+			return evaluate_best(my_board,self.color),(move[0],move[1])
 
 		# if base_value < cut_value:
 		# 	return cut_value,(move[0],move[1])
 		for mov in empty_item:
-			v,idx = self.Max(my_board,mov,depth,min_value)
-			value = base_value + v
+			value,idx = self.Max(my_board,mov,depth,min_value)
 			if value < cut_value:
 				return cut_value,(move[0],move[1])
 
@@ -394,9 +399,10 @@ class MinMax_best():
 				return -9999999 * (depth + 1),(move[0],move[1])
 
 		max_value = -999999999
-		empty_item = my_board.get_k_dist_empty(3)
+		empty_item = my_board.get_k_dist_empty(3,BLACK)
 		if len(empty_item) == 0:
 			empty_item.append([MIDDLE,MIDDLE])
+
 		t = random.randint(0,len(empty_item)-1)
 		max_idx = empty_item[t]
 		depth -= 1
@@ -436,7 +442,7 @@ class MinMax_best():
 				return -9999999 * (depth + 1),(move[0],move[1])
 
 		min_value = 999999999
-		empty_item = my_board.get_k_dist_empty(3)
+		empty_item = my_board.get_k_dist_empty(3,WHITE)
 		if len(empty_item) == 0:
 			empty_item.append([MIDDLE,MIDDLE])
 		t = random.randint(0,len(empty_item)-1)
