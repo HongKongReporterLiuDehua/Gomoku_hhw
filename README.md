@@ -2,22 +2,13 @@
 Some AI for the Gomoku include minmax, MCTS,Alpha Zero(TODO), and so on.
 本项目中包含python版本和C++版本的实现。
 
-<<<<<<< HEAD
-**其中，python版本是初版的实现，作为V1.0版本，C++作为后续迭代版本，目前更新到V1.5**
-=======
 **其中，python版本是初版的实现，作为V1.0版本，不打算继续更新python版本。C++作为后续迭代版本，目前更新到V1.5**
 
->>>>>>> f96c59aa04cb968939b82bd2678577734654e0f9
 具体内容如下：
 
 # python version 1.0
 * 实现不同评估函数下的minmax算法，比较原始版本的MCTS算法。
 * 因为python性能的问题，算法速度较慢，minmax在经过优化以后达到的深度也只是到4左右，而MCTS在哪怕60秒的思考条件下，反应出的棋力也不是特别优秀，故搁置python版本，转而通过C++来继续迭代
-<<<<<<< HEAD
-
-# C++ version 1.5
-* C++版本目前已经达到 
-=======
 * python版本的棋谱阅读功能目前在C++版本中还没实现，时间有限，懒得弄了，算是python版本唯一的一个优势吧。
 * 写作时参考了部分网上代码，作为一个五子棋新手，github上lihongxun945的五子棋教程对我编写minmax时帮助很大。
 
@@ -37,4 +28,3 @@ Some AI for the Gomoku include minmax, MCTS,Alpha Zero(TODO), and so on.
 * 加入C++版本的MCTS
 * 加入Alpha Zero原理的算法
 * 探索更强算法
->>>>>>> f96c59aa04cb968939b82bd2678577734654e0f9
