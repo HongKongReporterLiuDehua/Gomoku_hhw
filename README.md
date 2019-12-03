@@ -12,10 +12,11 @@ Some AI for the Gomoku include minmax, MCTS,Alpha Zero(TODO), and so on.
 * python版本的棋谱阅读功能目前在C++版本中还没实现，时间有限，懒得弄了，算是python版本唯一的一个优势吧。
 * 写作时参考了部分网上代码，作为一个五子棋新手，github上lihongxun945的五子棋教程对我编写minmax时帮助很大。
 
-# C++ version 1.5
+# C++ version 1.6
 * 重写了GUI，优化了用户体验。因为Qt也是第一次使用，代码写得比较混乱，后续版本在加入更强AI的过程中打算将代码优化得更漂亮一点。
 * 改善了minmax算法，通过alpha-beta剪枝，启发式搜索等改善，将3秒内可达的搜索深度提升到了8层（因各人电脑而异）。
 * 棋力还是比较不错了，但是提升空间还是很大。
+* 修复了白色方AI棋力骤减的bug
 
 # 使用指南
 * 建议使用C++版本。
