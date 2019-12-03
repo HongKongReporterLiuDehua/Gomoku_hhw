@@ -1,19 +1,23 @@
 #include"AI.h"
-
+#include <iostream>
 using namespace std;
 //*******************************************************************
 //*                       Method of AI                              *
 //*******************************************************************
 AI::AI(bool is_black, int depth, int cut_v = 10) {
+
 	if (is_black) {
 		color = BLACK;
 		other = WHITE;
+        cout << "black" << endl;
 	}
 	else {
+        cout << "white" << endl;
 		color = WHITE;
 		other = BLACK;
 	}
 	my_depth = depth;
+
 	cut = cut_v;
 }
 void AI::set(int depth, int cut_v = -1) {

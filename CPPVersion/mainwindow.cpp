@@ -93,7 +93,7 @@ void MainWindow::gameover(int color)
 
     }
     ui->gameProgress->setText(winner);
-    lastest.setParent(nullptr);
+    //lastest.setParent(nullptr);
     Game->terminate();
     Game->wait();
 }
@@ -152,7 +152,7 @@ void MainWindow::restart()
     gameover(FORCE);
     now_color = BLACK;
     step = 0;
-
+    lastest.setParent(nullptr);
     //connect(Game,SIGNAL(finished()),Game,SLOT(deleteLater()));
 
     for(int i = 0;i < 225;i ++){

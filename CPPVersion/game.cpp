@@ -25,20 +25,20 @@ void game::playersReady(int blackType,int whiteType){
         return;
     }
     switch(blackType){
-    case 0:black = new humanPlayer(true);break;
-    case 1:black = new AIPlayer(true,2);break;
-    case 2:black = new AIPlayer(true,4);break;
-    case 3:black = new AIPlayer(true,6);break;
-    case 4:black = new AIPlayer(true,8);break;
-    case 5:black = new AIPlayer(true,10);break;
+    case 0:black = new humanPlayer(BLACK);break;
+    case 1:black = new AIPlayer(BLACK,2);break;
+    case 2:black = new AIPlayer(BLACK,4);break;
+    case 3:black = new AIPlayer(BLACK,6);break;
+    case 4:black = new AIPlayer(BLACK,8);break;
+    case 5:black = new AIPlayer(BLACK,10);break;
     }
     switch(whiteType){
-    case 0:white = new humanPlayer(false);break;
-    case 1:white = new AIPlayer(false,2);break;
-    case 2:white = new AIPlayer(false,4);break;
-    case 3:white = new AIPlayer(false,6);break;
-    case 4:white = new AIPlayer(false,8);break;
-    case 5:white = new AIPlayer(false,10);break;
+    case 0:white = new humanPlayer(WHITE);break;
+    case 1:white = new AIPlayer(WHITE,2);break;
+    case 2:white = new AIPlayer(WHITE,4);break;
+    case 3:white = new AIPlayer(WHITE,6);break;
+    case 4:white = new AIPlayer(WHITE,8);break;
+    case 5:white = new AIPlayer(WHITE,10);break;
     }
 }
 
